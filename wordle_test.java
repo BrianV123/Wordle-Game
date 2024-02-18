@@ -31,6 +31,7 @@ class WordleTest{
 
 			if(current.length()!=5){
 				System.out.print(current + " is an invalid word. Please enter a 5 letter word: ");
+				input.close();
 				continue;
 			}
 			isValid = true;
