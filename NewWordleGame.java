@@ -63,7 +63,7 @@ class NewWordleGame{
         int index = random.nextInt(word_bank.length);    // Selects a random word from the word bank
         String secretWord = (word_bank[index]); // Initializing the answer to the randomly chosen word
         secretWord = secretWord.toUpperCase();
-	// System.out.println(secretWord);	// Shows the answer to help with debugging
+		//System.out.println(secretWord);	// Shows the answer to help with debugging
 
         //initializes a grid
         String[][] grid = {{"_","_","_","_","_"},{"_","_","_","_","_"},{"_","_","_","_","_"},{"_","_","_","_","_"},{"_","_","_","_","_"},{"_","_","_","_","_"}};
@@ -71,20 +71,11 @@ class NewWordleGame{
         //asks the user for 6 words and prints them to the grid
         String guess;
         for(int i = 0; i < 6; i++) {
+			
         	guess = getWord();
 			guess = guess.toUpperCase();
 
-        	String[] colorCoded = checkWord(guess, secretWord);
-        	grid[i] = colorCoded;
-        	//this may be replaced by a 2D array print function if we make one
-        	for(int j = 0; j < 6; j++) {
-        		for(int k = 0; k < 5; k++) {
-        			System.out.print(grid[j][k]);
-        		}
-        		System.out.println("");
-        		//TO-DO: check if the word is correct and exit the loop if it is
-        	}
-        	System.out.println("");
+			makeGrid(grid, guess, secretWord, i); 
 			if (guess.equals(secretWord) == true) {
 				System.out.println(BLUE + "CONGRATULATIONS!!!\n" + DEFAULT);
                 break;
@@ -197,5 +188,18 @@ class NewWordleGame{
 			}
 		}
 		return results;
+	}
+
+	public static void makeGrid(String grid[][],String guess, String secretWord, int i){
+
+		String[] colorCoded = checkWord(guess, secretWord);
+        grid[i] = colorCoded;
+		for(int j = 0; j < 6; j++) {
+			for(int k = 0; k < 5; k++) {
+				System.out.print(grid[j][k]);
+			}
+			System.out.println("");
+		}
+		System.out.println("");
 	}
 }
