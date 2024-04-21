@@ -77,7 +77,7 @@ class NewWordleGame{
 
 			makeGrid(grid, guess, secretWord, i); 
 			if (guess.equals(secretWord) == true) {
-				System.out.println(BLUE + "CONGRATULATIONS!!!\n" + DEFAULT);
+				System.out.println(BLUE + "CONGRATULATIONS!!! YOU GUESSED " + secretWord + "!!!" + DEFAULT);
                 break;
             }
 			if (guess.equals(secretWord) == false && i == 5) {
@@ -85,7 +85,7 @@ class NewWordleGame{
 		}
         }
 		
-
+		
         //TO-DO: print success if the correct word was found
         //print fail if the correct word was not found
         //maybe ask to play again?
