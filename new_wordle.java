@@ -69,18 +69,10 @@ class NewWordleGame{
 	        	Boolean win = false;
 	        	for(int i = 0; i < 6; i++) {
 	        		guess = getWord(word_bank);
-				guess = guess.toUpperCase();
-	
-	        		String[] colorCoded = checkWord(guess, secretWord);
-	        		grid[i] = colorCoded;
-	        		//this may be replaced by a 2D array print function if we make one
-	        		for(int j = 0; j < 6; j++) {
-	        			for(int k = 0; k < 5; k++) {
-	        				System.out.print(grid[j][k]);
-	        			}
-	        			System.out.println("");
-	        		}
-	        		System.out.println("");
+					guess = guess.toUpperCase();
+					
+					makeGrid(grid, guess, secretWord, i);
+
 				if (guess.equals(secretWord) == true) {
 					System.out.println("Congratulations!!!");
 					win = true;
@@ -199,4 +191,18 @@ class NewWordleGame{
 		}
 		return results;
 	}
+
+	public static void makeGrid(String grid[][],String guess, String secretWord, int i){
+
+		String[] colorCoded = checkWord(guess, secretWord);
+        grid[i] = colorCoded;
+		for(int j = 0; j < 6; j++) {
+			for(int k = 0; k < 5; k++) {
+				System.out.print(grid[j][k]);
+			}
+			System.out.println("");
+		}
+		System.out.println("");
+	}
 }
+
